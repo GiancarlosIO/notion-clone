@@ -1,7 +1,9 @@
-
+import type { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ headers }) => {
+  console.log({ headers });
+
   return (
     <div className="w-screen h-screen">
       <div
@@ -17,7 +19,9 @@ const Home: NextPage = () => {
           This Custom Nextjs App has the follows features:
         </p>
         <ul className="text-xl list-disc list-inside mb-4">
-          <li>Graphql support integrated with react-query and Graphql Codegen</li>
+          <li>
+            Graphql support integrated with react-query and Graphql Codegen
+          </li>
           <li>TailwindCSS with a custom configuration and optimization.</li>
           <li>Nprogress integrated to improve ux in page transitions</li>
           <li>Prettier formatter integrated with eslint</li>
@@ -40,5 +44,12 @@ const Home: NextPage = () => {
   );
 };
 
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { headers } = req;
+  return {
+    props: {
+      headers,
+    },
+  };
+};
 export default Home;
-
