@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
 
-const Home: NextPage = ({ headers }) => {
+const Home: NextPage<{ headers: Record<string, string> }> = ({ headers }) => {
   console.log({ headers });
 
   return (
